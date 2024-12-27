@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClientService } from './services/common/http-client.service';
 import { title } from 'process';
+import {AuthService} from "./services/common/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -11,18 +12,11 @@ import { title } from 'process';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private httpService: HttpClientService)
+  constructor(private authService: AuthService)
   {   
   }
 
   async start() {
-    this.httpService.post<LoginData>({ controller: 'auth', action: 'login'}, 
-      { email: 'mehmetcankz78@gmail.com', password: '123456' }
-    ).subscribe(val => console.log(val) );
+    this.authService.login("mehmetcankz78@gmail.com", "123456");
   }
-}
-
-class LoginData {
-  email?: string;
-  password?: string;
 }

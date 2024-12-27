@@ -7,6 +7,6 @@ import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    { provide: "baseUrl", useValue: "http://localhost:5071/api", multi: true}, 
+    { provide: "baseUrl", useValue: "http://localhost:5071/api", multi: true},
     provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideHttpClient()]
 };
